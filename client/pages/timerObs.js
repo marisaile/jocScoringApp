@@ -194,6 +194,7 @@ var app = {
     hundredths = 0;
     index = 0;
     currentIndex = 0;
+    
     $('.item-container').html('');
     $('.score').html('Score =');
     $('.timer').html('00.00');

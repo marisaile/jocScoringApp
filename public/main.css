@@ -146,20 +146,20 @@ body.timer-body .stopwatch-container .item-container h4 {
 body.timer-body .stopwatch-container .item-container .tweezer-row {
   position: relative;
   text-align: center;
-  font-size: 50px;
-  top: 100px;
+  font-size: 30px;
+  top: 50px;
 }
 
 body.timer-body .stopwatch-container .item-container .dropped-pin {
   position: relative;
   display: inline-block;
-  top: 150px;
+  top: 100px;
   left: 50px;
-  width: 100px;
-  height: 100px;
+  width: 85px;
+  height: 85px;
   border-radius: 100%;
-  font-size: 18px;
-  text-align: center;
+  font-size: 15px;
+  /*text-align: center;*/
   background-color: #555;
   color: #fff;
 }
@@ -175,13 +175,13 @@ body.timer-body .stopwatch-container .item-container .dropped-pin:active {
 body.timer-body .stopwatch-container .item-container .picked-up {
   position: relative;
   display: inline-block;
-  top: 150px;
+  top: 100px;
   left: 150px;
-  width: 100px;
-  height: 100px;
+  width: 85px;
+  height: 85px;
   border-radius: 100%;
-  font-size: 18px;
-  text-align: center;
+  font-size: 15px;
+  /*text-align: center;*/
   background-color: #fff;
   color: #555;
 }
@@ -197,7 +197,7 @@ body.timer-body .stopwatch-container .item-container .picked-up:active {
 body.timer-body table {
   position: relative;
   margin: 50px auto;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 body.timer-body table tr {

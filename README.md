@@ -1,1 +1,1 @@
-Customized stopwatch app
+Customized scoring/client tracking app
