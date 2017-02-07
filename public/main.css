@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Ubuntu);@import url(https://fonts.googleapis.com/css?family=Lato);body.timer-body {
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);@import url(https://fonts.googleapis.com/css?family=Lato);@import url(https://fonts.googleapis.com/css?family=Raleway);body.timer-body {
   margin: 0;
   background-color: #333;
   font-family: 'Ubuntu', monospace;
@@ -243,6 +243,117 @@ body.timer-body table td {
 .vdt-container .vdt-image {
   width: 350px;
   margin: 20px;
+}
+
+body.info-body {
+  background-color: #333;
+  font-family: 'Raleway', sans-serif;
+}
+
+.container-fluid {
+  position: relative;
+  display: block;
+  width: 80%;
+  margin: 7.5em auto;
+  border: 0.5px solid #999;
+  border-radius: 10px;
+  padding: 2em;
+  background-color: #fff;
+}
+
+.container-fluid .info-welcome {
+  position: relative;
+  display: block;
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  font-size: 1.25em;
+}
+
+.container-fluid .btn-start-info {
+  position: relative;
+  display: block;
+  margin: 2em auto;
+  padding: 1em 3em;
+  background-color: #4990E2;
+  color: #fff;
+}
+
+.container-fluid .welcome-helper {
+  position: relative;
+  display: block;
+  margin: 4em auto;
+  text-align: center;
+}
+
+.container-fluid .form-container {
+  border-right: 0.5px solid #999;
+  padding: 2em;
+}
+
+.container-fluid .form-container .section-header {
+  font-weight: bold;
+  margin-bottom: 2em;
+  font-size: 1.25em;
+}
+
+.container-fluid .form-container .inline-form {
+  display: inline-block;
+  width: 44%;
+  margin-right: 2em;
+  margin-bottom: 2em;
+}
+
+.container-fluid .form-container .sex-form {
+  display: block;
+}
+
+.container-fluid .form-container .radio-inline {
+  margin-left: 0.5em;
+  margin-right: 1.5em;
+}
+
+.container-fluid .form-container .btn-submit {
+  position: relative;
+  top: 2em;
+  left: 75%;
+  padding: 1em 2em;
+  background-color: #4990E2;
+  color: #fff;
+}
+
+.container-fluid .helper-container {
+  padding: 2em;
+}
+
+.container-fluid .helper-container .page {
+  display: inline-block;
+  list-style-image: none;
+  font-size: 1.5em;
+  margin-right: 1.25em;
+  color: #555;
+}
+
+.container-fluid .helper-container .active {
+  color: #4990E2;
+  border: 3px solid #4990E2;
+  border-radius: 50%;
+  padding: 0.5em 1em;
+}
+
+.container-fluid .helper-container .helper-details {
+  margin: 35% auto;
+  text-align: center;
+}
+
+.container-fluid .helper-container .helper-details .helper-header {
+  font-size: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.container-fluid .helper-container .helper-details .helper-text {
+  border-top: 0.5px solid #555;
+  padding: 0.5em;
 }
 
 html, body, div, span, applet, object, iframe,

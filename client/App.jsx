@@ -5,6 +5,7 @@ import 'styles/main.scss';
 import tweezer from 'pages/timerTD';
 import observation from 'pages/timerObs';
 import vdt from 'pages/visualDesigns';
+import info from 'pages/informationForm';
 
 $(function() {
 
@@ -19,6 +20,9 @@ $(function() {
     break;
     case '/pages/visualDesigns.html':
       vdt.init();
+    break;
+    case '/pages/informationForm.html':
+      info.init();
     break;
 
     default: break;
