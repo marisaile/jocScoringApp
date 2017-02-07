@@ -157,7 +157,7 @@ var app = {
   addPoints: function(){
     (function assignPoints(){      
       if (extraTime > 0.0) {
-        rowTime = (time + extraTime).toFixed(2);
+        rowTime = (Number(time) + extraTime);
       } else {
         rowTime = time;
       }
@@ -188,7 +188,7 @@ var app = {
   droppedPin: function(){
     $('.dropped-pin').click(function(){
       pinDropped++;
-      extraTime += 0.5;
+      extraTime += 0.05;
     });  
     pinDropped = 0;
     extraTime = 0;
@@ -196,7 +196,7 @@ var app = {
   pickedUp: function(){
     $('.picked-up').click(function(){
       pickedUp++;
-      extraTime -= 0.5;
+      extraTime -= 0.05;
     });
     pickedUp = 0;
     extraTime = 0;

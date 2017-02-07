@@ -4,6 +4,7 @@ import 'styles/main.scss';
 
 import tweezer from 'pages/timerTD';
 import observation from 'pages/timerObs';
+import vdt from 'pages/visualDesigns';
 
 $(function() {
 
@@ -16,6 +17,10 @@ $(function() {
     case '/pages/observationTimer.html':
       observation.init();
     break;
+    case '/pages/visualDesigns.html':
+      vdt.init();
+    break;
+
     default: break;
   }
 });

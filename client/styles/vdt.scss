@@ -1,0 +1,35 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+.vdt-container {
+  position: relative;
+  display: block;
+  padding: 20px;
+  height: 600px;
+  width: 900px;
+  margin: 200px auto;
+  background-color: #F0F1F3;
+  border-radius: 6px;
+  box-shadow: 2px 2px 2px;
+  font-family: 'Lato', sans-serif;
+  color: #333;
+  font-size: 1.25em;
+
+  h1.vdt-title {
+    text-align: center;
+  }
+
+  h2.vdt-instructions {
+    font-size: 1em;
+  }
+  button.btn-start {
+    position: relative;
+    display: block;
+    width: 250px;
+    margin: auto;
+  }
+  .vdt-image {
+    width: 350px;
+    margin: 20px;
+  }
+
+}

@@ -62,6 +62,10 @@
 	
 	var _pagesTimerObs2 = _interopRequireDefault(_pagesTimerObs);
 	
+	var _pagesVisualDesigns = __webpack_require__(168);
+	
+	var _pagesVisualDesigns2 = _interopRequireDefault(_pagesVisualDesigns);
+	
 	(0, _jquery2['default'])(function () {
 	
 	  var url = window.location.pathname;
@@ -73,6 +77,10 @@
 	    case '/pages/observationTimer.html':
 	      _pagesTimerObs2['default'].init();
 	      break;
+	    case '/pages/visualDesigns.html':
+	      _pagesVisualDesigns2['default'].init();
+	      break;
+	
 	    default:
 	      break;
 	  }
@@ -9931,7 +9939,7 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"timer-body":"timer-body","list-group":"list-group","timers":"timers","stopwatch-container":"stopwatch-container","test-name":"test-name","form-number":"form-number","reset-button":"reset-button","timer":"timer","btn":"btn","start-stop-button":"start-stop-button","misc-button":"misc-button","score":"score","create-csv":"create-csv","item-container":"item-container","tweezer-row":"tweezer-row","dropped-pin":"dropped-pin","picked-up":"picked-up"};
+	module.exports = {"timer-body":"timer-body","list-group":"list-group","timers":"timers","stopwatch-container":"stopwatch-container","test-name":"test-name","form-number":"form-number","reset-button":"reset-button","timer":"timer","btn":"btn","start-stop-button":"start-stop-button","misc-button":"misc-button","score":"score","create-csv":"create-csv","item-container":"item-container","tweezer-row":"tweezer-row","dropped-pin":"dropped-pin","picked-up":"picked-up","vdt-container":"vdt-container","vdt-title":"vdt-title","vdt-instructions":"vdt-instructions","btn-start":"btn-start","vdt-image":"vdt-image"};
 
 /***/ },
 /* 3 */,
@@ -10126,7 +10134,7 @@
 	  addPoints: function addPoints() {
 	    (function assignPoints() {
 	      if (extraTime > 0.0) {
-	        rowTime = (time + extraTime).toFixed(2);
+	        rowTime = Number(time) + extraTime;
 	      } else {
 	        rowTime = time;
 	      }
@@ -10157,7 +10165,7 @@
 	  droppedPin: function droppedPin() {
 	    (0, _jquery2['default'])('.dropped-pin').click(function () {
 	      pinDropped++;
-	      extraTime += 0.5;
+	      extraTime += 0.05;
 	    });
 	    pinDropped = 0;
 	    extraTime = 0;
@@ -10165,7 +10173,7 @@
 	  pickedUp: function pickedUp() {
 	    (0, _jquery2['default'])('.picked-up').click(function () {
 	      _pickedUp++;
-	      extraTime -= 0.5;
+	      extraTime -= 0.05;
 	    });
 	    _pickedUp = 0;
 	    extraTime = 0;
@@ -58135,6 +58143,291 @@
 	}, {
 	  id: 'Item 40',
 	  change: 'one paperclip gone'
+	}];
+
+/***/ },
+/* 168 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _jquery = __webpack_require__(1);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
+	var _handlebars = __webpack_require__(119);
+	
+	var _handlebars2 = _interopRequireDefault(_handlebars);
+	
+	var _templatesVdtItemsHtml = __webpack_require__(169);
+	
+	var _templatesVdtItemsHtml2 = _interopRequireDefault(_templatesVdtItemsHtml);
+	
+	var itemsTemplate;
+	var items = __webpack_require__(170);
+	var currentIndex = 0;
+	var array = [];
+	
+	var app = {
+	  init: function init() {
+	    app.compileTemplates();
+	    app.render();
+	  },
+	  render: function render() {
+	    app.bindEvents();
+	  },
+	  compileTemplates: function compileTemplates() {
+	    itemsTemplate = _handlebars2['default'].compile(_templatesVdtItemsHtml2['default']);
+	  },
+	  advancePage: function advancePage() {
+	    currentIndex++;
+	    (0, _jquery2['default'])('.vdt-container').html(itemsTemplate(items[currentIndex]));
+	  },
+	  startTest: function startTest() {
+	    (0, _jquery2['default'])('.btn-start').on('click', function () {
+	      (0, _jquery2['default'])('.vdt-container').html(itemsTemplate(items[currentIndex]));
+	    });
+	  },
+	  selectImage: function selectImage() {
+	    (0, _jquery2['default'])(document).on("click", ".vdt-item", function () {
+	      var choice = this.id;
+	      var itemNumber = currentIndex + 1;
+	      array.push(itemNumber, choice);
+	      app.advancePage();
+	    });
+	  },
+	  bindEvents: function bindEvents() {
+	    app.startTest();
+	    app.selectImage();
+	  }
+	};
+	
+	module.exports = app;
+
+/***/ },
+/* 169 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"vdt-image-container\">\n  <h1>{{itemNumber}}</h1>\n  <img class=\"vdt-image\" src={{src-a}}>\n  <button class=\"vdt-item\" id=\"a\">a</button>\n  <img class=\"vdt-image\"  src={{src-b}}>\n  <button class=\"vdt-item\" id=\"b\">b</button>\n</div>\n\n\n";
+
+/***/ },
+/* 170 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	module.exports = [{
+	  'itemNumber': '1',
+	  'src-a': '/images/VDT/vdt-1a.png',
+	  'src-b': '/images/VDT/vdt-1b.png',
+	  'scale': 'vd1',
+	  'correct': 'b'
+	}, {
+	  'itemNumber': '2',
+	  'src-a': '/images/VDT/vdt-2a.png',
+	  'src-b': '/images/VDT/vdt-2b.png',
+	  'scale': 'vd1',
+	  'correct': 'b'
+	}, {
+	  'itemNumber': '3',
+	  'src-a': '/images/VDT/vdt-3a.png',
+	  'src-b': '/images/VDT/vdt-3b.png',
+	  'scale': 'vd1',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '4',
+	  'src-a': '/images/VDT/vdt-4a.png',
+	  'src-b': '/images/VDT/vdt-4b.png',
+	  'scale': 'vd1',
+	  'correct': 'b'
+	}, {
+	  'itemNumber': '5',
+	  'src-a': '/images/VDT/vdt-5a.png',
+	  'src-b': '/images/VDT/vdt-5b.png',
+	  'scale': 'vd1',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '6',
+	  'src-a': '/images/VDT/vdt-6a.png',
+	  'src-b': '/images/VDT/vdt-6b.png',
+	  'scale': 'vd1',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '7',
+	  'src-a': '/images/VDT/vdt-7a.png',
+	  'src-b': '/images/VDT/vdt-7b.png',
+	  'scale': 'vd2',
+	  'correct': 'b'
+	}, {
+	  'itemNumber': '8',
+	  'src-a': '/images/VDT/vdt-8a.png',
+	  'src-b': '/images/VDT/vdt-8b.png',
+	  'scale': 'vd1',
+	  'correct': 'b'
+	}, {
+	  'itemNumber': '9',
+	  'src-a': '/images/VDT/vdt-9a.png',
+	  'src-b': '/images/VDT/vdt-9b.png',
+	  'scale': 'vd2',
+	  'correct': 'b'
+	}, {
+	  'itemNumber': '10',
+	  'src-a': '/images/VDT/vdt-10a.png',
+	  'src-b': '/images/VDT/vdt-10b.png',
+	  'scale': 'vd1',
+	  'correct': 'b'
+	}, {
+	  'itemNumber': '11',
+	  'src-a': '/images/VDT/vdt-11a.png',
+	  'src-b': '/images/VDT/vdt-11b.png',
+	  'scale': 'vd2',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '12',
+	  "src-a": "/images/VDT/vdt-12a.png",
+	  "src-b": "/images/VDT/vdt-12b.png",
+	  'scale': 'vd1',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '13',
+	  'src-a': '/images/VDT/vdt-13a.png',
+	  'src-b': '/images/VDT/vdt-13b.png',
+	  'scale': 'vd2',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '14',
+	  'src-a': '/images/VDT/vdt-14a.png',
+	  'src-b': '/images/VDT/vdt-14b.png',
+	  'scale': 'vd1',
+	  'correct': 'b'
+	}, {
+	  'itemNumber': '15',
+	  'src-a': '/images/VDT/vdt-15a.png',
+	  'src-b': '/images/VDT/vdt-15b.png',
+	  'scale': 'vd2',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '16',
+	  'src-a': '/images/VDT/vdt-16a.png',
+	  'src-b': '/images/VDT/vdt-16b.png',
+	  'scale': 'vd1',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '17',
+	  'src-a': '/images/VDT/vdt-17a.png',
+	  'src-b': '/images/VDT/vdt-17b.png',
+	  'scale': 'vd1',
+	  'correct': 'b'
+	}, {
+	  'itemNumber': '18',
+	  'src-a': '/images/VDT/vdt-18a.png',
+	  'src-b': '/images/VDT/vdt-18b.png',
+	  'scale': 'vd1',
+	  'correct': 'b'
+	}, {
+	  'itemNumber': '19',
+	  'src-a': '/images/VDT/vdt-19a.png',
+	  'src-b': '/images/VDT/vdt-19b.png',
+	  'scale': 'vd1',
+	  'correct': 'b'
+	}, {
+	  'itemNumber': '20',
+	  'src-a': '/images/VDT/vdt-20a.png',
+	  'src-b': '/images/VDT/vdt-20b.png',
+	  'scale': 'vd1',
+	  'correct': 'b'
+	}, {
+	  'itemNumber': '21',
+	  'src-a': '/images/VDT/vdt-21a.png',
+	  'src-b': '/images/VDT/vdt-21b.png',
+	  'scale': 'vd1',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '22',
+	  'src-a': '/images/VDT/vdt-22a.png',
+	  'src-b': '/images/VDT/vdt-22b.png',
+	  'scale': 'vd2',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '23',
+	  'src-a': '/images/VDT/vdt-23a.png',
+	  'src-b': '/images/VDT/vdt-23b.png',
+	  'scale': 'vd2',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '24',
+	  'src-a': '/images/VDT/vdt-24a.png',
+	  'src-b': '/images/VDT/vdt-24b.png',
+	  'scale': 'vd2',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '25',
+	  'src-a': '/images/VDT/vdt-25a.png',
+	  'src-b': '/images/VDT/vdt-25b.png',
+	  'scale': 'vd1',
+	  'correct': 'b'
+	}, {
+	  'itemNumber': '26',
+	  'src-a': '/images/VDT/vdt-26a.png',
+	  'src-b': '/images/VDT/vdt-26b.png',
+	  'scale': 'vd2',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '27',
+	  'src-a': '/images/VDT/vdt-27a.png',
+	  'src-b': '/images/VDT/vdt-27b.png',
+	  'scale': 'vd1',
+	  'correct': 'b'
+	}, {
+	  'itemNumber': '28',
+	  'src-a': '/images/VDT/vdt-28a.png',
+	  'src-b': '/images/VDT/vdt-28b.png',
+	  'scale': 'vd2',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '29',
+	  'src-a': '/images/VDT/vdt-29a.png',
+	  "src-b": '/images/VDT/vdt-29b.png',
+	  'scale': 'vd1',
+	  'correct': 'b'
+	}, {
+	  'itemNumber': '30',
+	  'src-a': '/images/VDT/vdt-30a.png',
+	  'src-b': '/images/VDT/vdt-30b.png',
+	  'scale': 'vd2',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '31',
+	  'src-a': '/images/VDT/vdt-31a.png',
+	  'src-b': "/images/VDT/vdt-31b.png",
+	  'scale': 'vd1',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '32',
+	  'src-a': '/images/VDT/vdt-32a.png',
+	  'src-b': '/images/VDT/vdt-32b.png',
+	  'scale': 'vd2',
+	  'correct': 'b'
+	}, {
+	  'itemNumber': '33',
+	  'src-a': '/images/VDT/vdt-33a.png',
+	  'src-b': '/images/VDT/vdt-33b.png',
+	  'scale': 'vd1',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '34',
+	  'src-a': '/images/VDT/vdt-34a.png',
+	  'src-b': '/images/VDT/vdt-34b.png',
+	  'scale': 'vd2',
+	  'correct': 'a'
+	}, {
+	  'itemNumber': '35',
+	  'src-a': '/images/VDT/vdt-35a.png',
+	  'src-b': '/images/VDT/vdt-35b.png',
+	  'scale': 'vd1',
+	  'correct': 'b'
 	}];
 
 /***/ }
